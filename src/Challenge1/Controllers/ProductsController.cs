@@ -4,12 +4,7 @@ namespace Challenge1.Controllers;
 
 public class ProductsController : Controller
 {
-    public ProductsController()
-    {
-    }
-
-    // GET
-	public async Task<ViewResult> Index()
+    public IActionResult Index()
     {
         return View();
     }
