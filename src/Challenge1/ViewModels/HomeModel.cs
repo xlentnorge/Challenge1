@@ -4,5 +4,5 @@ namespace Challenge1.ViewModels;
 
 public class HomeModel
 {
-    public IEnumerable<Customer> Customers { get; set; } = new List<Customer>();
+    public IEnumerable<Customer> Customers { get; set; } = [];
 }

@@ -3,32 +3,26 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Challenge1.ViewModels;
 
-namespace Challenge1.Controllers
+namespace Challenge1.Controllers;
+
+public class HomeController(ILogger<HomeController> logger) : Controller
 {
-    public class HomeController : Controller
+	private readonly ILogger<HomeController> _logger = logger;
+
+	public ViewResult Index()
 	{
-		private readonly ILogger<HomeController> _logger;
+		var homeModel = new HomeModel() { };
+		return View(homeModel);
+	}
 
-		public HomeController(ILogger<HomeController> logger)
-		{
-			_logger = logger;
-		}
+	public IActionResult Privacy()
+	{
+		return View();
+	}
 
-		public async Task<ViewResult> Index()
-		{
-			var homeModel = new HomeModel() {};
-			return View(homeModel);
-		}
-
-		public IActionResult Privacy()
-		{
-			return View();
-		}
-
-		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-		public IActionResult Error()
-		{
-			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-		}
+	[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+	public IActionResult Error()
+	{
+		return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
 	}
 }
